@@ -12,7 +12,7 @@ export default function fragmentPlugin(md) {
       const token = tokens[index]
 
       if (token.nesting === 1) {
-        return '<div class="marp-custom-fragment">\n'
+        return `<div${md.renderer.renderAttrs(token)}>\n`
       }
 
       return "</div>\n"
@@ -29,17 +29,18 @@ export default function fragmentPlugin(md) {
       let count = 0
 
       for (const token of state.tokens) {
-        // Marpit marks the beginning of each slide this way.
         if (token.meta?.marpitSlideElement === 1) {
           slide = token
           count = 0
           continue
         }
 
-        // Marpit marks the end of each slide this way.
         if (token.meta?.marpitSlideElement === -1) {
           if (slide && count > 0) {
-            slide.attrSet("data-marpit-fragments", String(count))
+            slide.attrSet(
+              "data-marpit-fragments",
+              String(count)
+            )
           }
 
           slide = null
@@ -51,7 +52,11 @@ export default function fragmentPlugin(md) {
           token.type === "container_fragment_open"
         ) {
           count += 1
-          token.attrSet("data-marpit-fragment", String(count))
+
+          token.attrSet(
+            "data-marpit-fragment",
+            String(count)
+          )
         }
       }
     }
