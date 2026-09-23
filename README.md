@@ -1,15 +1,42 @@
-# marpit-plugin-fragments
+# Marpit Fragments Plugin
 
-To install dependencies:
+Make any part of your Markdown a fragment, and create click animations.
 
-```bash
-bun install
+## Usage
+
+After installing this plugin with your favorite package manager, add it in a custom engine, either inside your config file:
+```js
+// marp.config.mjs
+import fragmentPlugin from "marpit-plugin-fragments"
+
+export default {
+  engine: ({ marp }) => marp.use(fragmentPlugin)
+}
 ```
 
-To run:
+Or alternatively, in its own file:
+```js
+// enigne.js
+import fragmentPlugin from "marpit-plugin-fragments"
 
-```bash
-bun run index.ts
+export default ({ marp }) => marp.use(fragmentPlugin)
 ```
 
-This project was created using `bun init` in bun v1.3.3. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Now in your Markdown file, use a fragment block:
+```md
+# Scale
+
+A series of notes with specific intervals between them. 
+
+::: fragment
+The way a musical piece uses them is called a **key**.
+:::
+```
+
+And voila!
+
+![Text appears when you click the right arrow or press space, all in one page!](example.gif)
+
+## Disclaimer
+
+This plugin was "vibe-coded" using [duck.ai](https://duck.ai); however, I manually tested it and even made some bad changes that had to be reverted, so I do not consider this project "slop". Ultimately, your milage may vary.
