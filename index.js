@@ -5,7 +5,7 @@ export default function fragmentPlugin(md) {
     marker: ":",
 
     validate(params) {
-      return params.trim() === "fragment"
+      return params.trim(),match(/^fragment\s+(.*)$/)
     },
 
     render(tokens, index) {
