@@ -4,7 +4,7 @@ Make any part of your Markdown a fragment, and create click animations.
 
 ## Usage
 
-After installing this plugin with your favorite package manager, add it in a custom engine, either inside your config file:
+After installing this plugin with your favorite package manager (it is not available in the npm registry for now, in the meantime install it from Git: `git+https://github.com/mikwee/marpit-plugin-fragments.git`), add it in a custom engine, either inside your config file:
 ```js
 // marp.config.mjs
 import fragmentPlugin from "marpit-plugin-fragments"
