@@ -1,7 +1,7 @@
 {
   "name": "marpit-plugin-fragments",
   "module": "index.js",
-  "exports": "index.js",
+  "exports": "./index.js",
   "type": "module",
   "license": "GPL-3.0-or-later",
   "dependencies": {
